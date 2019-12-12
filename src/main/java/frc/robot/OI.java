@@ -10,13 +10,18 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.Robot_Autonomo_Prueba;
+import frc.robot.commands.Robot_Chasis_Mover_Linea_Recta;
+import frc.robot.commands.Robot_Climb_Contraer;
+import frc.robot.commands.Robot_Climb_Expander;
+
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-
 
   public Joystick Stick_C;
   public Joystick Stick_Sub;
@@ -34,7 +39,18 @@ public class OI {
     Stick_C = new Joystick(0);
     Stick_Sub = new Joystick(1);
 
+    ButtonA1 = new JoystickButton(Stick_C, 1);
+    ButtonX1 = new JoystickButton(Stick_C, 3);
+
+
+    ButtonA1.whenPressed(new Robot_Autonomo_Prueba());
+    //ButtonA1.whenPressed(new Robot_Climb_Expander());
+    //ButtonX1.whenPressed(new Robot_Climb_Contraer());
+    ButtonX1.whenPressed(new Robot_Chasis_Mover_Linea_Recta());
+
   }
+  
+
   
 
   //// CREATING BUTTONS
